@@ -1,3 +1,7 @@
+# Manual inputs
+course_material
+course_material/*
+
 ### C++ template
 # Prerequisites
 *.d
