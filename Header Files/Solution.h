@@ -4,7 +4,8 @@
 
 class Solution {
 public:
-    Solution();
+    Solution(int numberOfBits);
 private:
-    std::vector<int> bits;
+    int mNumberOfBits;
+    std::vector<int> mBits;
 };
