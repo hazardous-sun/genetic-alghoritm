@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <set>
+#include <math.h>
 
 // returns a random double
 double randomDouble()
