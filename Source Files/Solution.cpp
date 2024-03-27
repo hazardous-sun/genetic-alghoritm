@@ -2,6 +2,7 @@
 #include "../Header Files/Utils.h"
 #include <cmath>
 #include <sstream>
+#include <iostream>
 
 Solution::Solution(int numberOfBits, int low, int high) :
         mLow(low),
@@ -19,6 +20,13 @@ Solution::Solution(int numberOfBits, int low, int high) :
     for (int i = 0; i < numberOfBits; i++) {
         mBits.push_back(rand() % 2);
     }
+}
+
+Solution::Solution(int numberOfBits, int low, int high, std::vector<int> bits) :
+        mLow(low),
+        mHigh(high),
+        mNumberOfBits(numberOfBits),
+        mBits(bits) {
 }
 
 std::string Solution::toString() const {
@@ -47,4 +55,30 @@ double Solution::bitsToDouble() const {
 double Solution::fitness() const {
     double x = bitsToDouble();
     return x + 2 * sin(x);
+}
+
+std::vector<Solution> Solution::singlePointCrossover(Solution other, double crossoverProbability) {
+    bool cross = randomProbability(crossoverProbability);
+
+    std::cout << " Cross = " << cross << " ";
+
+    if (cross) {
+        int crossPoint = rand() % mNumberOfBits;
+
+        std::vector<int> bits1;
+        std::vector<int> bits2;
+
+        std::copy(this->mBits.begin(), this->mBits.begin() + crossPoint, std::back_inserter(bits1));
+        std::copy(other.mBits.begin() + crossPoint, other.mBits.end(), std::back_inserter(bits1));
+
+        std::copy(other.mBits.begin(), other.mBits.begin() + crossPoint, std::back_inserter(bits2));
+        std::copy(this->mBits.begin() + crossPoint, this->mBits.end(), std::back_inserter(bits2));
+
+        Solution child1{mNumberOfBits, mLow, mHigh, bits1};
+        Solution child2{mNumberOfBits, mLow, mHigh, bits2};
+
+        return {child1, child2};
+    } else {
+        return {*this, other};
+    }
 }

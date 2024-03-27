@@ -7,9 +7,13 @@ class Solution {
 public:
     Solution(int numberOfBits, int low, int high);
 
+    Solution(int numberOfBits, int low, int high, std::vector<int> bits);
+
     std::string toString() const;
 
     double fitness() const;
+
+    std::vector<Solution> singlePointCrossover(Solution other, double crossoverProbability);
 
 private:
     double bitsToDouble() const;

@@ -5,10 +5,16 @@
 #include <iostream>
 #include <set>
 
-GenericAlgorithm::GenericAlgorithm(int populationSize, int generations, int tournamentGroupSize) :
+GenericAlgorithm::GenericAlgorithm(
+        int populationSize,
+        int generations,
+        int tournamentGroupSize,
+        double crossOverProbability
+) :
         mPopulationSize(populationSize),
         mGenerations(generations),
-        mTournamentGroupSize(tournamentGroupSize) {
+        mTournamentGroupSize(tournamentGroupSize),
+        mCrossoverProbability(crossOverProbability) {
 
 }
 
@@ -28,7 +34,12 @@ Solution GenericAlgorithm::run(int numberOfBits, int low, int high) {
     }
 
     for (int i = 0; i < mGenerations; i++) {
-        std::vector<Solution> crossedSolutions = tournamentCrossover();
+        std::vector<Solution> crossedSolutions = tournamentCrossover(currentGeneration);
+        std::cout << "Crossed solutions\n";
+
+        for (Solution s: crossedSolutions) {
+            std::cout << s.toString() << "\n";
+        }
     }
 
     return best;
@@ -64,7 +75,14 @@ std::vector<Solution> GenericAlgorithm::tournamentCrossover(std::vector<Solution
         Solution winner1 = tournamentWinner(currentGeneration);
         Solution winner2 = tournamentWinner(currentGeneration);
 
+        std::cout << "Crossing the winners: " << winner1.toString() << " & " << winner2.toString();
+
         // Perform crossover
-        std::vector<Solution> children = singlePointCrossover(winner1, winner2);
+        std::vector<Solution> children = winner1.singlePointCrossover(winner2, mCrossoverProbability);
+        newSolution.push_back(children[0]);
+        newSolution.push_back(children[1]);
+
+        std::cout << "Children = " << children[0].toString() << " & " << children[1].toString() << "\n";
     }
+    return newSolution;
 }
