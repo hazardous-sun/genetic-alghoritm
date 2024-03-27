@@ -3,7 +3,7 @@
 #include <cmath>
 #include <sstream>
 
-Solution::Solution(int low, int high, int numberOfBits) :
+Solution::Solution(int numberOfBits, int low, int high) :
         mLow(low),
         mHigh(high),
         mNumberOfBits(numberOfBits) {
