@@ -7,9 +7,10 @@ int main() {
     int populationSize = 100;
     int generations = 10;
     int tournamentGroupSize = 3;
+    double crossoverProbability = 0.7;
     int bits = 8;
     int low = 0;
     int high = 4;
-    GenericAlgorithm ga(populationSize, generations, tournamentGroupSize);
+    GenericAlgorithm ga(populationSize, generations, tournamentGroupSize, crossoverProbability);
     Solution bestSolution = ga.run(bits, low, high);
 }
