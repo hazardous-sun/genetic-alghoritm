@@ -1,6 +1,6 @@
 #include "../Header Files/Solution.h"
 #include "../Header Files/Utils.h"
-#include <math.h>
+#include <cmath>
 #include <sstream>
 
 Solution::Solution(int low, int high, int numberOfBits) :
@@ -28,6 +28,7 @@ std::string Solution::toString() const {
         stream << bit << " ";
     }
     stream << "] double = " << bitsToDouble() << " fitness = " << fitness();
+    return stream.str();
 }
 
 double Solution::bitsToDouble() const {
