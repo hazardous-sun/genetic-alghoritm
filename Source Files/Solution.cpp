@@ -27,7 +27,7 @@ std::string Solution::toString() const {
     for (int bit: mBits) {
         stream << bit << " ";
     }
-    stream << "] double = " << bitsToDouble();
+    stream << "] double = " << bitsToDouble() << " fitness = " << fitness();
 }
 
 double Solution::bitsToDouble() const {
@@ -40,4 +40,10 @@ double Solution::bitsToDouble() const {
         sum = sum + pow(2, i) * mBits[i];
     }
     return sum * prec + mLow;
+}
+
+// Optimizes f(x) = x + 2 * sin(x)
+double Solution::fitness() const {
+    double x = bitsToDouble();
+    return x + 2 * sin(x);
 }
