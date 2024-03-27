@@ -26,7 +26,7 @@ bool randomProbability(double probability)
     return false;
 }
 
-double precision(int low, int high, int numberOfBits)
+double precision(int numberOfBits, int low, int high)
 {
     double prec = (double)(high - low) / (double)(pow(2, numberOfBits) - 1);
     return prec;
