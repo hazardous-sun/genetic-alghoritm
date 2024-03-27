@@ -6,9 +6,10 @@ int main() {
     std::cout << "Hi, student!\n";
     int populationSize = 100;
     int generations = 10;
+    int tournamentGroupSize = 3;
     int bits = 8;
     int low = 0;
     int high = 4;
-    GenericAlgorithm ga(populationSize, generations);
+    GenericAlgorithm ga(populationSize, generations, tournamentGroupSize);
     Solution bestSolution = ga.run(bits, low, high);
 }
