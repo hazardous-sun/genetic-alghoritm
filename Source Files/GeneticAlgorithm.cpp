@@ -2,7 +2,6 @@
 #include "../Header Files/Utils.h"
 
 #include <ctime>
-#include <iostream>
 #include <set>
 
 GenericAlgorithm::GenericAlgorithm(
