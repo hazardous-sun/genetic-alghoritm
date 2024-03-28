@@ -8,7 +8,8 @@ public:
             int populationSize,
             int generations,
             int tournamentGroupSize,
-            double crossoverProbability
+            double crossoverProbability,
+            double mutationProbability
     );
 
     Solution run(int numberOfBits, int low, int high);
@@ -23,4 +24,5 @@ private:
     int mGenerations;
     int mTournamentGroupSize;
     double mCrossoverProbability;
+    double mMutationProbability
 };

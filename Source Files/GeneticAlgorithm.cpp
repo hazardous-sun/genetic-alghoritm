@@ -9,12 +9,14 @@ GenericAlgorithm::GenericAlgorithm(
         int populationSize,
         int generations,
         int tournamentGroupSize,
-        double crossOverProbability
+        double crossOverProbability,
+        double mutationProbability
 ) :
         mPopulationSize(populationSize),
         mGenerations(generations),
         mTournamentGroupSize(tournamentGroupSize),
-        mCrossoverProbability(crossOverProbability) {
+        mCrossoverProbability(crossOverProbability),
+        mMutationProbability(mutationProbability) {
 
 }
 
@@ -38,7 +40,7 @@ Solution GenericAlgorithm::run(int numberOfBits, int low, int high) {
         std::cout << "Crossed solutions\n";
 
         for (Solution s: crossedSolutions) {
-            std::cout << s.toString() << "\n";
+            s.mutate(mMutationProbability);
         }
     }
 
