@@ -15,6 +15,8 @@ public:
 
     std::vector<Solution> singlePointCrossover(Solution other, double crossoverProbability);
 
+    void mutate(double mutationProbability);
+
 private:
     double bitsToDouble() const;
 

@@ -59,9 +59,6 @@ double Solution::fitness() const {
 
 std::vector<Solution> Solution::singlePointCrossover(Solution other, double crossoverProbability) {
     bool cross = randomProbability(crossoverProbability);
-
-    std::cout << " Cross = " << cross << " ";
-
     if (cross) {
         int crossPoint = rand() % mNumberOfBits;
 
@@ -80,5 +77,15 @@ std::vector<Solution> Solution::singlePointCrossover(Solution other, double cros
         return {child1, child2};
     } else {
         return {*this, other};
+    }
+}
+
+void Solution::mutate(double mutationProbability) {
+    for (int i = 0; i < mNumberOfBits; i++) {
+        bool mutateBool = randomProbability(mutationProbability);
+
+        if (mutateBool) {
+            mBits[i] = !mBits[i];
+        }
     }
 }

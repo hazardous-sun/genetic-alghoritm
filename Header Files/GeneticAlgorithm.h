@@ -24,5 +24,5 @@ private:
     int mGenerations;
     int mTournamentGroupSize;
     double mCrossoverProbability;
-    double mMutationProbability
+    double mMutationProbability;
 };
