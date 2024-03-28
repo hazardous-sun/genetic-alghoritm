@@ -46,11 +46,11 @@ make
 
 ## Code Explanation
 
-The code implements a basic Genetic Algorithm to optimize the function f(x) = x + 2sin(x). Here's a brief overview of
+The code implements a basic Genetic Algorithm to optimize the function $f(x) = x + 2sin(x)$. Here's a brief overview of
 the key components:
 
 * Solution class: This class represents a candidate solution in the search space. It holds a binary string of a fixed
-  length and provides methods to calculate its fitness value (based on the function f(x)), convert the binary string to
+  length and provides methods to calculate its fitness value (based on the function $f(x)$), convert the binary string to
   a real number, perform mutations, and perform single-point crossover with another solution.
 * GeneticAlgorithm class: This class manages the population of solutions, performs selection using a tournament
   selection approach, applies crossover and mutation operations, and iterates through generations to evolve the
