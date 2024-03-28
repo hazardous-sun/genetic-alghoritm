@@ -1,7 +1,7 @@
 # Genetic Algorithm
 
 Designed to explore fundamental AI concepts and optimization algorithms, this project implements a simple Genetic
-Algorithm (GA) to find the optimal value for the function f(x) = x + 2sin(x) within a specified range.
+Algorithm (GA) to find the optimal value for the function $f(x) = x + 2sin(x)$ within a specified range.
 
 ## Project Structure
 
