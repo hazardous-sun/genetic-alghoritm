@@ -26,21 +26,28 @@ Solution GenericAlgorithm::run(int numberOfBits, int low, int high) {
 
     std::vector<Solution> currentGeneration;
 
+    // Gets the first generation
     for (int i = 0; i < mPopulationSize; i++) {
         currentGeneration.push_back(Solution(numberOfBits, low, high));
     }
 
-    std::cout << "First generation>\n";
-    for (Solution s: currentGeneration) {
-        std::cout << s.toString() << "\n";
-    }
-
+    // Crosses the solutions
     for (int i = 0; i < mGenerations; i++) {
         std::vector<Solution> crossedSolutions = tournamentCrossover(currentGeneration);
-        std::cout << "Crossed solutions\n";
-
         for (Solution s: crossedSolutions) {
             s.mutate(mMutationProbability);
+        }
+        currentGeneration = crossedSolutions;
+    }
+
+    double maxFitness = currentGeneration[0].fitness();
+    best = currentGeneration[0];
+
+    for (int i = 0; i < mPopulationSize; i++) {
+        double fitness = currentGeneration[i].fitness();
+        if (fitness > maxFitness) {
+            maxFitness = fitness;
+            best = currentGeneration[i];
         }
     }
 

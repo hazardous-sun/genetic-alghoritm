@@ -13,4 +13,8 @@ int main() {
     int high = 4;
     GenericAlgorithm ga(populationSize, generations, tournamentGroupSize, crossoverProbability, mutationProbability);
     Solution bestSolution = ga.run(bits, low, high);
+
+    std::cout << "Best solution = " << bestSolution.toString() << "\n";
+
+    return 0;
 }
